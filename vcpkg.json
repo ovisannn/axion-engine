@@ -1,0 +1,21 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "name": "axion",
+  "version": "0.1.0",
+  "description": "Axion Game Engine",
+  "builtin-baseline": "74f5fda46bfe10d8dcbbbb6770a7a294a300fbbb",
+  "dependencies": [
+    "glfw3",
+    {
+      "name": "glad",
+      "features": ["gl-api-45"]
+    },
+    "glm",
+    "spdlog",
+    {
+      "name": "imgui",
+      "features": ["glfw-binding", "opengl3-binding", "docking-experimental"]
+    },
+    "stb"
+  ]
+}
