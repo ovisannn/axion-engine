@@ -7,7 +7,7 @@
 
 class SandboxApp : public Axion::Application {
 public:
-    SandboxApp() : Application("Sandbox - Axion Engine") {
+    SandboxApp() : Application("Sandbox - Axion Engine", 1920U, 1080U) {
         AX_INFO("SandboxApp created");
     }
 

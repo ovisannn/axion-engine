@@ -8,9 +8,9 @@ namespace Axion {
 
     Application* Application::s_Instance = nullptr;
 
-    Application::Application(const std::string& name) {
+    Application::Application(const std::string& name, uint32_t width, uint32_t height) {
         s_Instance = this;
-        m_Window = Window::Create(WindowProps(name));
+        m_Window = Window::Create(WindowProps(name, width, height));
     }
 
     Application::~Application() {

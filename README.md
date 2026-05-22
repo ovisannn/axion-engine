@@ -29,7 +29,7 @@ Progressive milestones for building Axion. Each phase produces a runnable, demon
 - [ ] Mouse events: `MouseButtonPressedEvent`, `MouseMovedEvent`, `MouseScrolledEvent`
 - [ ] Wire GLFW callbacks → push events into `Window` callback
 - [ ] `Application::OnEvent()` receives events from window
-- [ ] Add `KeyCode.h` / `MouseCode.h` (platform-agnostic input codes)
+- [x] Add `KeyCode.h` / `MouseCode.h` (platform-agnostic input codes)
 
 **Deliverable:** Pressing keys / clicking mouse logs events to console. Window resize updates viewport.
 
