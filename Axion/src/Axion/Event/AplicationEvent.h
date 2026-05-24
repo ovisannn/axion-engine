@@ -26,9 +26,35 @@ namespace Axion {
 	};
 
 	class WindowFocusEvent : public Event {
-		
-	};
-	//WindowFocusEvent, WindowLostFocusEvent — no data
-	//WindowMovedEvent — stores position
+	public:
+		WindowFocusEvent() = default;
 
+		EventType GetEventType() const override { return EventType::WindowFocus; }
+		const char* GetName() const override { return "ApplicationFocusEvent"; }
+		int GetCategoryFlags() const override { return EventCategoryApplication; }
+	};
+
+	class WindowLostFocusEvent : public Event {
+	public:
+		WindowLostFocusEvent() = default;
+
+		EventType GetEventType() const override { return EventType::WindowLostFocus; }
+		const char* GetName() const override { return "ApplicationLostFocusEvent"; }
+		int GetCategoryFlags() const override { return EventCategoryApplication; }
+	};
+
+	class WindowMovedEvent : public Event {
+	public:
+		WindowMovedEvent(int x, int y)
+			: m_X(x), m_Y(y) {
+		}
+		EventType GetEventType() const override { return EventType::WindowMoved; }
+		const char* GetName() const override { return "ApplicationMovedEvent"; }
+		int GetCategoryFlags() const override { return EventCategoryApplication; }
+		int GetX() const { return m_X; }
+		int GetY() const { return m_Y; }
+
+	private:
+		int m_X, m_Y;
+	};
 }
