@@ -2,6 +2,7 @@
 #include "Axion/Event/Event.h"
 
 namespace Axion {
+
 	class KeyEvent : public Event {
 	public:
 		inline int GetKeyCode() const { return m_KeyCode; }
@@ -12,6 +13,7 @@ namespace Axion {
 		}
 		int m_KeyCode;
 	};
+
 	class KeyPressedEvent : public KeyEvent {
 	public:
 		KeyPressedEvent(int keycode, bool repeat)
@@ -23,4 +25,21 @@ namespace Axion {
 	private:
 		bool m_Repeat;
 	};
-	class KeyReleased
+
+	class KeyReleased : public KeyEvent {
+	public:
+		KeyReleased(int keycode)
+			: KeyEvent(keycode) {
+		}
+		EventType GetEventType() const override { return EventType::KeyReleased; }
+		const char* GetName() const override { return "KeyReleasedEvent"; }
+	};
+
+	class KeyTypedEvent : public KeyEvent {
+	public:
+		KeyTypedEvent(int keycode)
+			: KeyEvent(keycode) {
+		}
+		EventType GetEventType() const override { return EventType::KeyTyped; }
+		const char* GetName() const override { return "KeyTypedEvent"; }
+	};

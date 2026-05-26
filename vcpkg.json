@@ -3,18 +3,18 @@
   "name": "axion",
   "version": "0.1.0",
   "description": "Axion Game Engine",
-  "builtin-baseline": "74f5fda46bfe10d8dcbbbb6770a7a294a300fbbb",
+  "builtin-baseline": "a0df28c67403290f611347d837ee849fe98e5ad1",
   "dependencies": [
     "glfw3",
     {
       "name": "glad",
-      "features": ["gl-api-45"]
+      "features": [ "gl-api-45" ]
     },
     "glm",
     "spdlog",
     {
       "name": "imgui",
-      "features": ["glfw-binding", "opengl3-binding", "docking-experimental"]
+      "features": [ "glfw-binding", "opengl3-binding", "docking-experimental" ]
     },
     "stb"
   ]
