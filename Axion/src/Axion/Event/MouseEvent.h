@@ -11,6 +11,7 @@ namespace Axion {
 	private:
 		float m_MouseX, m_MouseY;
 	};
+
 	class MouseScrolledEvent : public Event {
 	public:
 		MouseScrolledEvent(float xOffset, float yOffset)
@@ -23,4 +24,10 @@ namespace Axion {
 	private:
 		float m_XOffset, m_YOffset;
 	};
+
+	class MouseButtonPressedEvent : public Event {
+	public:
+		inline int GetMouseButton() const { return m_Button; }
+		EventType GetEventType() const override { return EventType::MouseButtonPressed; }
+		const char* GetName() const override { return "MouseButtonPressedEvent"; }
 }
