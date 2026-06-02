@@ -10,3 +10,8 @@
 #include "Axion/Core/Log.h"
 #include "Axion/Core/Application.h"
 #include "Axion/Core/Window.h"
+
+#include "Axion/Event/Event.h"
+#include "Axion/Event/AplicationEvent.h"
+#include "Axion/Event/KeyEvent.h"
+#include "Axion/Event/MouseEvent.h"

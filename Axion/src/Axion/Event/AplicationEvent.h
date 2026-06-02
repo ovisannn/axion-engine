@@ -6,7 +6,8 @@ namespace Axion {
 	public:
 		ApplicationCloseEvent() = default;
 
-		EventType GetEventType() const override { return EventType::WindowClose; }
+		static EventType GetStaticType() { return EventType::WindowClose; }
+		EventType GetEventType() const override { return GetStaticType(); }
 		const char* GetName() const override { return "ApplicationCloseEvent"; }
 		int GetCategoryFlags() const override { return EventCategoryApplication; }
 	};
@@ -16,11 +17,18 @@ namespace Axion {
 		ApplicationResizeEvent(uint32_t width, uint32_t height)
 			: m_Width(width), m_Height(height) {
 		}
-		EventType GetEventType() const override { return EventType::WindowResize; }
+		static EventType GetStaticType() { return EventType::WindowResize; }
+		EventType GetEventType() const override { return GetStaticType(); }
 		const char* GetName() const override { return "ApplicationResizeEvent"; }
 		int GetCategoryFlags() const override { return EventCategoryApplication; }
 		uint32_t GetWidth() const { return m_Width; }
 		uint32_t GetHeight() const { return m_Height; }
+
+		std::string ToString() const override {
+			std::stringstream ss;
+			ss << "ApplicationResizeEvent: " << m_Width << ", " << m_Height;
+			return ss.str();
+		}
 	private:
 		unsigned int m_Width, m_Height;
 	};

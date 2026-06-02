@@ -22,6 +22,12 @@ namespace Axion {
 		bool IsRepeat() const { return m_Repeat; }
 		EventType GetEventType() const override { return EventType::KeyPressed; }
 		const char* GetName() const override { return "KeyPressedEvent"; }
+
+		std::string ToString() const override {
+			std::stringstream ss;
+			ss << "KeyPressedEvent: " << m_KeyCode << " (repeat=" << m_Repeat << ")";
+			return ss.str();
+		}
 	private:
 		bool m_Repeat;
 	};
@@ -33,6 +39,12 @@ namespace Axion {
 		}
 		EventType GetEventType() const override { return EventType::KeyReleased; }
 		const char* GetName() const override { return "KeyReleasedEvent"; }
+
+		std::string ToString() const override {
+			std::stringstream ss;
+			ss << "KeyReleasedEvent: " << m_KeyCode;
+			return ss.str();
+		}
 	};
 
 	class KeyTypedEvent : public KeyEvent {
@@ -42,4 +54,12 @@ namespace Axion {
 		}
 		EventType GetEventType() const override { return EventType::KeyTyped; }
 		const char* GetName() const override { return "KeyTypedEvent"; }
+
+		std::string ToString() const override {
+			std::stringstream ss;
+			ss << "KeyTypedEvent: " << m_KeyCode;
+			return ss.str();
+		}
 	};
+
+}

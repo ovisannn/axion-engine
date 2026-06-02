@@ -2,6 +2,8 @@
 #include "Axion/Core/Application.h"
 #include "Axion/Core/Log.h"
 
+#include "Axion/Event/AplicationEvent.h"
+
 #include <glad/glad.h>
 
 namespace Axion {
@@ -11,6 +13,8 @@ namespace Axion {
     Application::Application(const std::string& name, uint32_t width, uint32_t height) {
         s_Instance = this;
         m_Window = Window::Create(WindowProps(name, width, height));
+        // send every event OnEvent method
+        m_Window->SetEventCallback(AX_BIND_EVENT_FN(OnEvent));
     }
 
     Application::~Application() {
@@ -33,6 +37,26 @@ namespace Axion {
 
     void Application::Close() {
         m_Running = false;
+    }
+
+    void Application::OnEvent(Event& e) {
+        EventDispatcher dispatcher(e);
+        dispatcher.Dispatch<ApplicationCloseEvent>(AX_BIND_EVENT_FN(OnWindowClose));
+        dispatcher.Dispatch<ApplicationResizeEvent>(AX_BIND_EVENT_FN(OnWindowResize));
+
+        if (!e.Handled)
+            AX_CORE_TRACE("{0}", e.ToString());
+    }
+
+    bool Application::OnWindowClose(ApplicationCloseEvent& e) {
+        (void)e;
+        Close();
+        return true;  // event handled — stop propagating
+    }
+
+    bool Application::OnWindowResize(ApplicationResizeEvent& e) {
+        glViewport(0, 0, static_cast<GLsizei>(e.GetWidth()), static_cast<GLsizei>(e.GetHeight()));
+        return false;
     }
 
 }

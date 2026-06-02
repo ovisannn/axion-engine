@@ -3,10 +3,13 @@
 #include "Axion/Core/Base.h"
 
 #include <string>
+#include <functional>
 
 struct GLFWwindow;
 
 namespace Axion {
+
+	class Event;
 
     struct WindowProps {
         std::string Title;
@@ -23,10 +26,11 @@ namespace Axion {
 
     class Window {
     public:
+        using EventCallbackFn = std::function<void(Event&)>;
+
         Window(const WindowProps& props);
         ~Window();
 
-        // Non-copyable
         Window(const Window&) = delete;
         Window& operator=(const Window&) = delete;
 
@@ -35,6 +39,8 @@ namespace Axion {
         uint32_t GetWidth() const { return m_Data.Width; }
         uint32_t GetHeight() const { return m_Data.Height; }
         bool ShouldClose() const;
+
+        void SetEventCallback(const EventCallbackFn& callback) { m_Data.EventCallback = callback; }
 
         void SetVSync(bool enabled);
         bool IsVSync() const { return m_Data.VSync; }
@@ -45,6 +51,7 @@ namespace Axion {
 
     private:
         void Init(const WindowProps& props);
+        void SetGLFWCallbacks();
         void Shutdown();
 
     private:
@@ -55,6 +62,7 @@ namespace Axion {
             uint32_t Width = 0;
             uint32_t Height = 0;
             bool VSync = true;
+            EventCallbackFn EventCallback; 
         };
 
         WindowData m_Data;

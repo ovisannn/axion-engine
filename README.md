@@ -20,15 +20,15 @@ Progressive milestones for building Axion. Each phase produces a runnable, demon
 
 ---
 
-## 🚧 Phase 1 — Event System
+## ✅ Phase 1 — Event System (DONE)
 
-- [ ] `Event` base class with categories (Application, Input, Keyboard, Mouse)
-- [ ] `EventDispatcher` for type-safe event handling
-- [ ] Window events: `WindowCloseEvent`, `WindowResizeEvent`, `WindowFocusEvent`
-- [ ] Key events: `KeyPressedEvent`, `KeyReleasedEvent`, `KeyTypedEvent`
-- [ ] Mouse events: `MouseButtonPressedEvent`, `MouseMovedEvent`, `MouseScrolledEvent`
-- [ ] Wire GLFW callbacks → push events into `Window` callback
-- [ ] `Application::OnEvent()` receives events from window
+- [x] `Event` base class with categories (Application, Input, Keyboard, Mouse)
+- [x] `EventDispatcher` for type-safe event handling
+- [x] Window events: `ApplicationCloseEvent`, `ApplicationResizeEvent`, `WindowFocusEvent`
+- [x] Key events: `KeyPressedEvent`, `KeyReleased`, `KeyTypedEvent`
+- [x] Mouse events: `MouseButtonPressedEvent`, `MouseMovedEvent`, `MouseScrolledEvent`
+- [x] Wire GLFW callbacks → push events into `Window` callback
+- [x] `Application::OnEvent()` receives events from window
 - [x] Add `KeyCode.h` / `MouseCode.h` (platform-agnostic input codes)
 
 **Deliverable:** Pressing keys / clicking mouse logs events to console. Window resize updates viewport.
