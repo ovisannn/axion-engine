@@ -18,7 +18,7 @@ public:
 
 	void OnUpdate() override {
 		if (Axion::Input::IsKeyPressed(KeyCode::W)) {
-			AX_INFO("W key is pressed wolwolwolwolwo");
+			AX_INFO("W key is pressed");
 		}
 
         if (Axion::Input::IsMouseButtonPressed(MouseCode::Button0)) {

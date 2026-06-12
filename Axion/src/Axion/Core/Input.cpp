@@ -14,17 +14,22 @@ namespace Axion {
 		auto* window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
 		int state = glfwGetKey(window, static_cast<int>(keycode));
 
-		return state == GLFW_PRESS || state == GLFW_REPEAT;
+		return state == GLFW_PRESS;
 	}
 
 	bool Input::IsMouseButtonPressed(MouseCode key) {
 		int keycode = static_cast<int> (key);
 		auto* window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
 		int state = glfwGetMouseButton(window, keycode);
-		return state == GLFW_PRESS || state == GLFW_REPEAT;
+
+		return state == GLFW_PRESS;
 	}
 	std::pair<float, float> Input::GetMousePosition() {
-		AX_CORE_WARN("Input::GetMousePosition is not implemented!");
-		return { 0.0f, 0.0f };
+		auto* window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
+		
+		double x, y;
+		glfwGetCursorPos(window, &x, &y);
+
+		return { static_cast<float>(x), static_cast<float>(y) };
 	}
 }

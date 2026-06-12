@@ -14,7 +14,7 @@ namespace Axion {
         s_Instance = this;
         m_Window = Window::Create(WindowProps(name, width, height));
         // send every event OnEvent method
-        m_Window->SetEventCallback(AX_BIND_EVENT_FN(OnEvent));
+		//m_Window->SetEventCallback(AX_BIND_EVENT_FN(OnEvent)); //this line logging every event. do mind to enable this if you want to see them in the console
     }
 
     Application::~Application() {

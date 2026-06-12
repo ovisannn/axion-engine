@@ -35,10 +35,10 @@ Progressive milestones for building Axion. Each phase produces a runnable, demon
 
 ---
 
-## 🚧 Phase 2 — Input Polling
+## 🚧 Phase 2 — Input Polling (DONE)
 
-- [ ] `Input` static class with `IsKeyPressed(KeyCode)`, `IsMouseButtonPressed`, `GetMousePosition`
-- [ ] Platform-specific implementation (`WindowsInput.cpp` or single GLFW backend)
+- [x] `Input` static class with `IsKeyPressed(KeyCode)`, `IsMouseButtonPressed`, `GetMousePosition`
+- [x] Platform-specific implementation (`WindowsInput.cpp` or single GLFW backend)
 
 **Deliverable:** Move a debug variable with WASD, log mouse coords.
 
