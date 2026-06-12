@@ -12,7 +12,7 @@ file(GLOB_RECURSE AXION_SOURCES
     "include/*.hpp"
 )
 
-add_library(Axion STATIC ${AXION_SOURCES} "src/Axion/Time/Time.h" "src/Axion/Time/Time.cpp" "src/Axion/Core/KeyCodes.h" "src/Axion/Core/MouseCodes.h" "src/Axion/Event/Event.h"  "src/Axion/Event/AplicationEvent.h" "src/Axion/Event/KeyEvent.h" "src/Axion/Event/MouseEvent.h")
+add_library(Axion STATIC ${AXION_SOURCES} "src/Axion/Time/Time.h" "src/Axion/Time/Time.cpp" "src/Axion/Core/KeyCodes.h" "src/Axion/Core/MouseCodes.h" "src/Axion/Event/Event.h"  "src/Axion/Event/AplicationEvent.h" "src/Axion/Event/KeyEvent.h" "src/Axion/Event/MouseEvent.h" "src/Axion/Core/Input.h" "src/Axion/Core/Input.cpp")
 
 target_include_directories(Axion
     PUBLIC

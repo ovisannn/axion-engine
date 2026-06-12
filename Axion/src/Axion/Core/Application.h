@@ -13,7 +13,7 @@ namespace Axion {
     public:
         Application(const std::string& name = "Axion App", uint32_t widht = 1280U, uint32_t height = 720U);
         virtual ~Application();
-
+        virtual void OnUpdate() {};
         void Run();
         void Close();
 

@@ -28,6 +28,7 @@ namespace Axion {
             // Clear the screen to a dark teal 
             glClearColor(0.1f, 0.15f, 0.18f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
+            OnUpdate();
 
             m_Window->OnUpdate();
         }
