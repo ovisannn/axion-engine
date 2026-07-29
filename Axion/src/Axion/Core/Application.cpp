@@ -14,7 +14,7 @@ namespace Axion {
         s_Instance = this;
         m_Window = Window::Create(WindowProps(name, width, height));
         // send every event OnEvent method
-		//m_Window->SetEventCallback(AX_BIND_EVENT_FN(OnEvent)); //this line logging every event. do mind to enable this if you want to see them in the console
+		m_Window->SetEventCallback(AX_BIND_EVENT_FN(OnEvent)); //this line logging every event. do mind to enable this if you want to see them in the console
     }
 
     Application::~Application() {
@@ -28,7 +28,13 @@ namespace Axion {
             // Clear the screen to a dark teal 
             glClearColor(0.1f, 0.15f, 0.18f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
-            OnUpdate();
+
+            //OnUpdate();
+            for (Layer* layer : m_LayerStack) { //<- bottom-top update
+				layer->OnUpdate(0.0f);  // TODO: pass delta time later
+                
+				//m_Window->OnUpdate(); // Update the window after each layer update
+            }
 
             m_Window->OnUpdate();
         }
@@ -45,8 +51,15 @@ namespace Axion {
         dispatcher.Dispatch<ApplicationCloseEvent>(AX_BIND_EVENT_FN(OnWindowClose));
         dispatcher.Dispatch<ApplicationResizeEvent>(AX_BIND_EVENT_FN(OnWindowResize));
 
-        if (!e.Handled)
-            AX_CORE_TRACE("{0}", e.ToString());
+        //if (!e.Handled)
+        //    AX_CORE_TRACE("{0}", e.ToString());
+
+        for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it) {
+            if (e.Handled) {
+				break;
+			}
+			(*it)->OnEvent(e);
+        }
     }
 
     bool Application::OnWindowClose(ApplicationCloseEvent& e) {
@@ -59,5 +72,13 @@ namespace Axion {
         glViewport(0, 0, static_cast<GLsizei>(e.GetWidth()), static_cast<GLsizei>(e.GetHeight()));
         return false;
     }
+
+	void Application::PushLayer(Layer* layer) {
+		m_LayerStack.PushLayer(layer);
+	}
+
+	void Application::PushOverlay(Layer* overlay) {
+		m_LayerStack.PushOverlay(overlay);
+	}
 
 }

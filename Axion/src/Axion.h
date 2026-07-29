@@ -10,6 +10,7 @@
 #include "Axion/Core/Log.h"
 #include "Axion/Core/Application.h"
 #include "Axion/Core/Window.h"
+#include "Axion/Core/Layer.h"
 
 #include "Axion/Event/Event.h"
 #include "Axion/Event/AplicationEvent.h"

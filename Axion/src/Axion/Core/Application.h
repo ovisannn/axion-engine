@@ -2,6 +2,7 @@
 
 #include "Axion/Core/Base.h"
 #include "Axion/Core/Window.h"
+#include "Axion/Core/LayerStack.h"
 
 namespace Axion {
 
@@ -20,6 +21,9 @@ namespace Axion {
         // Called by the Window whenever an event occurs.
         void OnEvent(Event& e);
 
+        void PushLayer(Layer* layer);
+        void PushOverlay(Layer* layer);
+
         Window& GetWindow() { return *m_Window; }
         static Application& Get() { return *s_Instance; }
 
@@ -28,6 +32,7 @@ namespace Axion {
         bool OnWindowClose(ApplicationCloseEvent& e);
         bool OnWindowResize(ApplicationResizeEvent& e);
 
+        LayerStack m_LayerStack;
         Scope<Window> m_Window;
         bool m_Running = true;
 
