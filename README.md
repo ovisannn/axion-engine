@@ -46,10 +46,10 @@ Progressive milestones for building Axion. Each phase produces a runnable, demon
 
 ## 🚧 Phase 3 — Layer System
 
-- [ ] `Layer` base class with `OnAttach`, `OnDetach`, `OnUpdate`, `OnEvent`, `OnImGuiRender`
-- [ ] `LayerStack` (layers + overlays — overlays always on top)
-- [ ] `Application` owns a `LayerStack`, iterates it each frame
-- [ ] Events propagate top-to-bottom through layers (can be "handled" to stop)
+- [x] `Layer` base class with `OnAttach`, `OnDetach`, `OnUpdate`, `OnEvent`, `OnImGuiRender`
+- [x] `LayerStack` (layers + overlays — overlays always on top)
+- [x] `Application` owns a `LayerStack`, iterates it each frame
+- [x] Events propagate top-to-bottom through layers (can be "handled" to stop)
 
 **Deliverable:** Sandbox can push custom `ExampleLayer` that logs lifecycle events.
 
